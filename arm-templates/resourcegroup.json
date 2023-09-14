@@ -13,7 +13,7 @@
         "resourceGroupName": {
             "type": "string",
             "metadata": {
-                "description": "Enter the location to deploy the resource group"
+                "description": "Enter the name for the resource group"
             },
             "defaultValue": "rg-githubactions"
 
