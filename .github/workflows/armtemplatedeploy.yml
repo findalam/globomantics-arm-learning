@@ -26,10 +26,17 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy Resource Group rg-githubactions with AZ CLI
-        uses: Azure/cli@v1.0.4
+        uses: Azure/cli@v1
         with:
-          azcliversion: 2.29.2
-          inlinescript: |
+          azcliversion: latest
+          inlineScript: |
+            set -ex
+            ls ~/.azure
+            cat ~/.azure/versionCheck.json
+            az --version
+            az account show
+            az group list
+          
             az deployment sub create --location "Australia East" --template-file ./arm-templates/resourcegroup.jason
       
 
