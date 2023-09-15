@@ -31,10 +31,20 @@ jobs:
           scope: subcription
           subscriptionId: c454cdac-7e10-4194-9431-6fda95d467bd
           region: Australia East
-          template: ./arm-templates/resourcegroup.jsom
+          template: ./arm-templates/resourcegroup.json
           deploymentName: rg-githubactions
 
+      - name: Deploy Storage Account
+        uses: Azure/arm-deploy@v1
+        with:
+          scope: resourcegroup
+          resourceGroupName: rg-githubactions
 
+          subscriptionId: c454cdac-7e10-4194-9431-6fda95d467bd
+          
+          template: ./arm-templates/storageaccount.json
+          parameters: ./arm-templates/storageaccount.parameters.json
+          deploymentMode: incremental
       
       
 
